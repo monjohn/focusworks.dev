@@ -11,6 +11,3 @@
 - mix serum.gen.post (-t|--title) TITLE (-o|--output) OUTPUT [Options]
 
 ## Deploy
-
-mix serum.build
-scp -r site/\* do-deploy:/var/www/focusworks.dev/html
