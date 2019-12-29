@@ -1,0 +1,30 @@
+---
+title: FocusWorks
+---
+<h2>Recent Posts</h2>
+<ul>
+  <%= for post <- Enum.take(@all_posts, 5) do %>
+    <article class="post">
+      <header>
+        <h3><%= post.title %></h3>
+        <p>
+          <%= post.date %>
+          <%= unless Enum.empty? post.tags do %>
+            <span class="tags">
+              Tags:
+              <%= for t <- post.tags do %>
+                <a class="tag" href="<%= t.list_url %>"><%= t.name %></a>
+              <% end %>
+            </span>
+          <% end %>
+        </p>
+      </header>
+      <div>
+        <%= @contents %>
+      </div>
+    </article>
+  <% end %>
+</ul>
+<h2>
+  Why FocusWorks?
+</h2>

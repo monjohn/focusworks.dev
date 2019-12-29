@@ -11,3 +11,5 @@
 - mix serum.gen.post (-t|--title) TITLE (-o|--output) OUTPUT [Options]
 
 ## Deploy
+
+run ./scripts/publish.sh
