@@ -1,5 +1,5 @@
 <ul>
-  <li><a href="<%= page "index" %>">Home</a></li>
+  <li><a href="<%= page "index"  %>" title="FocusWorks.dev home page">Home</a></li>
   <li><a href="<%= base "posts" %>">Posts</a></li>
-  <li><a href="https://phellow.focusworks.dev">Phellow</a></li>
+  <li><a href="https://phellow.focusworks.dev" title="A Trello-clone writting in Elixir with Phoenix LiveView">Phellow</a></li>
 </ul>

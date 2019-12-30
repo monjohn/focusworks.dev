@@ -1,0 +1,9 @@
+<aside class="contact-info">
+  <img src="https://monjohn.github.io//images/me.png" class="bio-photo" alt="Monte Johnston bio photo">
+  <h3>Monte Johnston</h3>
+  <address>
+    <a href="http://twitter.com/johnstonmonte" class="author-social" target="_blank"><i class="fab fa-twitter-square"></i> Twitter</a>
+    <a href="http://linkedin.com/in/monte-johnston-873a9a124" class="author-social" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a href="http://github.com/monjohn" class="author-social" target="_blank"><i class="fab fa-github-square"></i> Github</a>
+  </address>
+</aside>
