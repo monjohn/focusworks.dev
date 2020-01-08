@@ -16,7 +16,7 @@ Some people equate functional programming with a rigid type system that is enfor
 
 The dangers of global, mutable state have become increasingly acknowledged. It makes programs more complex and hard to reason about, which then equates to bugs. To me, functional programming is about writing code in such a way as to be very intentional about mutation and side-effects. Most of the time, in functional programming, you write functions that take data in and return new data out, also known as pure functions. [Here's a great blog post](https://lispcast.com/global-mutable-state/) if you want to read more.
 
-Elixir is great at this. It only has immutable data structures, so you can't have global mutatable state. Programming in Elixir will teach new valuable practices that will save you many headaches.
+Elixir is great at this. It only has immutable data structures, so you can't have global mutatable state. Programming in Elixir will teach new valuable practices that will save you many headaches. You can even bring these lessons back to your main language. Writing JavaScript in a functional way is a lot simplier and more fun.
 
 ## 2. Phoenix
 
@@ -30,7 +30,7 @@ Ok, so this is cheating a bit because LiveView is actually part of Phoenix, but 
 
 On the web, we have two different paradigms. One, web pages served up to the browsers upon request (e.g. Rails or Django) or single page applications (SPA) written in Javascript that get a large initial payload and then update themselves by fetching data from the server (e.g. React or Vue). The tradeoffs are well-documented. [Phoenix LiveView](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html) stomps on that clear division.
 
-With very little JavasScript you can achieve most of the benefits of an SPA, but still get all of the dynamism. LiveView does diffing on the state of the page, so that only those elements that have changed will get updated. So there are no full-page reloads and very little data is sent over the wire. How does it accomplish this wonder? Learn Elixir and find out. 😊
+With almost no JavasScript you can achieve most of the benefits of an SPA, but still get all of the dynamism. LiveView does diffing on the state of the page, so that only those elements that have changed will get updated. So there are no full-page reloads and very little data is sent over the wire. How does it accomplish this wonder? Learn Elixir and find out. 😊
 
 I have written a [Trello-clone using LiveView](https://phellow.focusworks.dev) if you want to see it in action.
 
@@ -48,21 +48,21 @@ You should definitely check it out.
 
 ## 5. Concurrency
 
-One of the main motivations of José Valim to create Elixir was the desire to take advantage of multiple cores on a computer since that is the chief way that computers are trying to get faster. He was working on the Rails core team, and struggling to get Rails to take advantage of more than one core, and struggling to do so. He went looking for other tools to tackle this very challenging problem. He discovered the Erlang programming language and it runtime, which uses functional ideas as well as the Actor model to get a handle on this problem. He build Elixir to run on the Erlang runtime and to take advantage of it.
+One of the main motivations of José Valim to create Elixir was the desire to take advantage of multiple cores on a computer since that is the chief way that computers are trying to get faster. He was working on the Rails core team, and struggling to get Rails to take advantage of more than one core. He went looking for other tools to tackle this very challenging problem. He discovered the Erlang programming language and its runtime, which uses functional ideas as well as the Actor model to get a handle on this problem. He built Elixir to run on the Erlang runtime and to take advantage of it.
 
 I highly recommend hearing José tell his story [in this video](https://www.welcometothejungle.com/en/articles/btc-elixir-jose-valim#play-video)
 
 I have read articles about the Actor model, but didn't really grok it. It was only when programming with Elixir that I really begin to understand it, and appreciate how simple it is. This is what learning Elixir can do for you too.
 
+Elixir's concurrency model let's it scale from beefy servers to distributed Raspberry PIs, which brings us to...
+
 ## 6. Nerves
 
-IOT is definitely an exciting frontier now as small chips and computers are becoming quite cheap. The [Nerves Project](https://nerves-project.org/) is an Elixir framework for proramming and controlling embedded devices. The advantage of using Elixir for this again comes primarily from the platform. Erlang was written to run telephone switches for Erik. It was designed for systems with these traits: distributed, fault-tolerant, real-time, highly available, and non-stop applications.[1](<https://en.wikipedia.org/wiki/Erlang_(programming_language)>) This is pretty-much IOT in a nutshell.
+IOT is definitely an exciting frontier now as small chips and computers are becoming quite cheap. The [Nerves Project](https://nerves-project.org/) is an Elixir framework for proramming and controlling embedded devices. The advantage of using Elixir for this again comes primarily from the platform. Erlang was written to run telephone switches for Ericsson. It was designed for systems with these traits: distributed, fault-tolerant, real-time, highly available, and non-stop applications. Here is [a really informative video](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwij5ofwnO_mAhXDl-AKHX_DDlUQwqsBMAB6BAgKEAQ&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DSOqQVoVai6s&usg=AOvVaw3jUl1S2RBto1GYWdUZ1PNi) about Erlang.
 
-If you want to know more about Erlang, there is [a really informative video](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwij5ofwnO_mAhXDl-AKHX_DDlUQwqsBMAB6BAgKEAQ&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DSOqQVoVai6s&usg=AOvVaw3jUl1S2RBto1GYWdUZ1PNi)
+Distributed, real-time, highly-available. This is pretty-much IOT in a nutshell. So if you are interested in embedded computing, you won't find better tools than Nerves. It also has a very active community around it.
 
-So if you are interested in embedded computer, you won't find better tools than Nerves. It also has a very active community around it.
-
-I haven't done anyting with Nerves yet, but I am hoping to this year.
+I haven't done anyting with Nerves yet, but I am hoping to grab a Raspberry PI and get started this year.
 
 ## 7. Pattern Matching
 
