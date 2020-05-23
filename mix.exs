@@ -19,7 +19,7 @@ defmodule Blog.MixFile do
 
   defp deps do
     [
-      {:serum, "~> 1.3"}
+      {:serum, "~> 1.4.1"}
     ]
   end
 end
