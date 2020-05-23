@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title><%= @page.title %> - <%= @site.name %></title>
     <link rel="stylesheet" href="<%= asset "css/style.css" %>">
+    <link rel="stylesheet" href="<%= asset "css/prism-dark.css" %>">
     <%= include "head-extras" %>
   </head>
   <body>

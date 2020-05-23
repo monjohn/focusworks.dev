@@ -4,8 +4,8 @@ body {
   margin: 0;
   background: #eceff4;
   color: #4c566a;
-  font-family: 'PT Sans', '.SFNSText-Regular', 'Segoe UI', 'Helvetica',
-    'Lucida Grande', 'Tahoma', 'Yu Gothic UI', 'Malgun Gothic', sans-serif;
+  font-family: 'PT Sans', '.SFNSText-Regular', 'Segoe UI', 'Helvetica', 'Lucida Grande', 'Tahoma',
+    'Yu Gothic UI', 'Malgun Gothic', sans-serif;
   font-size: 16px;
 }
 
@@ -91,10 +91,12 @@ code {
 pre code {
   display: block;
   box-sizing: border-box;
-  padding: 0.3rem 0.4rem;
-  border-left: 4px solid #ddd;
-  color: #434c5e;
-  background: whitesmoke;
+  padding: 1rem 0.8rem;
+  color: white;
+  background: rgb(76, 86, 106);
+  border-radius: 1em;
+
+  /* background: whitesmoke; */
 }
 
 h1 code,
@@ -152,7 +154,8 @@ article > div svg {
 blockquote {
   margin: 1em 0;
   padding: 0 0.75em;
-  border: 1px solid transparent;
+  border: 1px solid #e5e9f0;
+  background-color: #eceff4;
 }
 
 blockquote p {
@@ -235,8 +238,8 @@ kbd {
   border: 1px solid #ccc;
   border-radius: 3px;
   box-shadow: 0 2px 0 #ccc;
-  font-family: 'Open Sans', '.SFNSText-Regular', 'Segoe UI', 'Helvetica',
-    'Lucida Grande', 'Tahoma', 'Yu Gothic UI', 'Malgun Gothic', sans-serif;
+  font-family: 'Open Sans', '.SFNSText-Regular', 'Segoe UI', 'Helvetica', 'Lucida Grande', 'Tahoma',
+    'Yu Gothic UI', 'Malgun Gothic', sans-serif;
   font-size: 0.8em;
 }
 
