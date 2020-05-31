@@ -23,13 +23,13 @@ pre[class*='language-'] {
   }
 }
 
-.token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
   color: #5e81ac;
 }
 
+.token.comment,
 .token.punctuation {
   color: #81a1c1;
 }
