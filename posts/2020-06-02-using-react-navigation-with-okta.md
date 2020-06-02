@@ -7,27 +7,25 @@ tags: React Native Web, React Navigation, Okta
 ### Navigation
 
 There have been some exciting announcements recently in the world of React Native.
-[React Native for Web](https://github.com/necolas/react-native-web) continues to make progress. Equally important is that [Expo.io](https://docs.expo.io/workflow/web/) continues to make using more and more convenient. Creating a new React Native project that can be build for Android, iOS or the web is as easy as `expo init newProject`.
+[React Native for Web](https://github.com/necolas/react-native-web) is gaining traction, providing a single API for mobile and web apps. Equally important is that [Expo.io](https://docs.expo.io/workflow/web/) continues to make using React Native more and more. Creating a new React Native project that can be build for Android, iOS or the web is as easy as `expo init newProject`.
 
-One persistant problem with using React is navigation. What seems like a good solution often gets rewritten to provide another, "better" solution. Obviously it is a hard problem, where each solution has trade-offs. Nevertheless, I have come to appreciate [React Navigation](https://reactnavigation.org/) when working on React Native projects. Incidentally, this project is also by Expo folks. Therefore, I was excited when I saw that they had done a lot of work to make this a navigation solution for the web: [https://reactnavigation.org/blog/2020/05/16/web-support](https://reactnavigation.org/blog/2020/05/16/web-support).
+One persistant problem with using React is navigation. What seems like a good solution often gets rewritten to provide another, "better" solution. Obviously it is a hard problem where each solution has trade-offs. Personally, I have come to appreciate [React Navigation](https://reactnavigation.org/) when working on React Native projects. (This project is also by Expo folks.) Therefore, I was excited when I saw that it's now compatible with the web: [https://reactnavigation.org/blog/2020/05/16/web-support](https://reactnavigation.org/blog/2020/05/16/web-support).
 
 So with all of this good news, **my goal was to build a website with React Native for web and use React Navigation to do it.**
 
 ### Authentication
 
-I have been working with Okta lately as an OAuth provider, I wanted to integrate that too. I had used their SDK for plain JavaScript on another project. But since this is a React project I took a look at [a library they have published](https://developer.okta.com/code/react/okta_react/) for integrating Okta with React. Looked promising, according to their docs:
+I have been working with Okta lately as an OAuth provider, I wanted to integrate that too. I have used their SDK for plain JavaScript on another project. But since this is a React project I took a look at [a library they have published](https://developer.okta.com/code/react/okta_react/) for integrating Okta with React. It looked promising. According to their docs:
 
 > We'll also need @okta/okta-react and react-router-dom to manage our routes (@okta/okta-react can be used to support other router libraries, but react-router-dom has pre-existing support).
 
-It is a bit confusing whether react-router-dom is required or not, given that they say that other libraries are supported. Turns out, it is. I was a bit annoyed, not wanting to include a library I am not using, but, oh well!. I included it, but soon a ran into trouble. Turns out that it didn't like not having react-router routes. So much for supporting other libraries!
+It is unclear whether react-router-dom is required or not, given that they say that other libraries are supported. Turns out, it is required. I was a bit annoyed, not wanting to include a library I am not using, but, oh well!. I included it, but soon a ran into trouble. Turns out that it didn't like not having react-router routes. So much for supporting other libraries!
 
-I looked at their code and extracted the parts that I needed. I used that and included the logic that I needed.
-
-Here's what I came up with.
+Looking at the souorce code, I extracted the parts that I needed. Below, I'm going to share the solution that I came up with.
 
 ### React Navigation and Otka 💕
 
-My App.ts file is pretty simple. It just wraps the Navigation component with a the Security Component, which provides the functionality from Okta. That gets pretty complicated, so I'll save that too the end for those who are looking for an example of calling the low level functions. The config looks something like this:
+My App.ts file is pretty simple. It simply wraps the Navigation component with a Security component, which provides the functionality from Okta. That gets pretty complicated, so I'll save that for the end, for those who are looking for an example of calling the low level functions.
 
 #### App.tsx
 
@@ -49,6 +47,8 @@ function App() {
 export default App
 ```
 
+The config looks something like this. The constants will come from your Okta account info.
+
 ```lang-javascript
 export const authConfig = {
   pkce: true,
@@ -63,9 +63,9 @@ export const authConfig = {
 
 Next up is Navigation.ts. This is where we set up React Navigation. I needed to set up the main NavigationContainer with a `linking` config, which handled the route 'auth/callback' because that is how my Okta server is set up.
 
-I created the `requireAuthentication` function to handle Okta logic of getting an access token. It will redirect to the Okta signup page if one is not present. Once an token is present, we update the state of the Navigation component, which then renders the Navigation component. This is the pattern that React Navigation [recommends](https://reactnavigation.org/docs/auth-flow).
+I created the `requireAuthentication` function to handle Okta logic of getting an access token. It redirects to the Okta signup page if an authorization token is not present. Once an token is present, it changes the value of `isAuthenticated`, which then renders the main content of the app. This is the pattern that React Navigation [recommends](https://reactnavigation.org/docs/auth-flow).
 
-In addition, `useOktaAuth` also provides a function to the access token as well as the `authClient` object itself so that components can do what they need to do. Here is the code:
+Here is the code:
 
 #### Navigation.tsx
 
@@ -113,7 +113,7 @@ const Navigation = () => {
 export default Navigation
 ```
 
-We render the signup screen if the user is not authenticated. This file serves as the destination for the redirect from Okta. I tried using the home page for this but ended up in a loop. Moving this to a new route solved the problem. Here is the simple file.
+As you can see in the code above, we render the Signup screen if the user is not authenticated. The main purpose of this file is to serve as the destination for the redirect from Okta. I originally used the home page for this but ended up in a loop. Moving this to a new route solved the problem. Here is the simple file.
 
 #### Signin.tsx
 
@@ -211,5 +211,7 @@ export default Security
 ```
 
 ### Finally
+
+I am sure that there a opportunities for real improvement, feel free to let me know if you see some.
 
 When I see a write-up like this, I find it really helpful to have a repo that I can look at and try to build. I considered that but using Okta requires an account and a server, so each solution would be pretty unique. The best outcome would be for [@okta](https://twitter.com/okta) to provide a solution for React that is not [so tied to React Router](https://developer.okta.com/code/react/okta_react/).
