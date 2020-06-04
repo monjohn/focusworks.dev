@@ -15,3 +15,5 @@
 
 run ./scripts/publish.sh
 mix serum.server
+
+`goaccess /var/log/nginx/access.log --log-format=COMBINED`
