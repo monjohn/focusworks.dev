@@ -9,7 +9,7 @@ tags: React Native Web, React Navigation, Okta
 There have been some exciting announcements recently in the world of React Native.
 [React Native for Web](https://github.com/necolas/react-native-web) is gaining traction, providing a single API for mobile and web apps. Equally important is that [Expo.io](https://docs.expo.io/workflow/web/) continues to make using React Native more and more. Creating a new React Native project that can be build for Android, iOS or the web is as easy as `expo init newProject`.
 
-One persistant problem with using React is navigation. What seems like a good solution often gets rewritten to provide another, "better" solution. Obviously it is a hard problem where each solution has trade-offs. Personally, I have come to appreciate [React Navigation](https://reactnavigation.org/) when working on React Native projects. (This project is also by Expo folks.) Therefore, I was excited when I saw that it's now compatible with the web: [https://reactnavigation.org/blog/2020/05/16/web-support](https://reactnavigation.org/blog/2020/05/16/web-support).
+One persistant problem with using React is navigation. What seems like a good solution often gets rewritten to provide another, "better" solution. Obviously it is a hard problem where each solution has trade-offs. Personally, I have come to appreciate React Navigation when working on React Native projects. (This project is also by Expo folks.) Therefore, I was excited when I saw that it's now compatible with the web: [https://reactnavigation.org/blog/2020/05/16/web-support](https://reactnavigation.org/blog/2020/05/16/web-support). Just follow the installation instructions on the [React Navigation](https://reactnavigation.org/) site.
 
 So with all of this good news, **my goal was to build a website with React Native for web and use React Navigation to do it.**
 
@@ -22,6 +22,8 @@ I have been working with Okta lately as an OAuth provider, I wanted to integrate
 It is unclear whether react-router-dom is required or not, given that they say that other libraries are supported. Turns out, it is required. I was a bit annoyed, not wanting to include a library I am not using, but, oh well!. I included it, but soon a ran into trouble. Turns out that it didn't like not having react-router routes. So much for supporting other libraries!
 
 Looking at the souorce code, I extracted the parts that I needed. Below, I'm going to share the solution that I came up with.
+
+Run `yarn add @okta/okta-auth-js` or `npm i @okta/okta-auth-js` to get started.
 
 ### React Navigation and Otka 💕
 
@@ -54,10 +56,7 @@ export const authConfig = {
   pkce: true,
   issuer: ISSUER,
   clientId: CLIENT_ID,
-  redirectUri: REDIRECT_URL,
-  tokenManager: {
-    secure: true,
-  },
+  redirectUri: REDIRECT_URL
 }
 ```
 
